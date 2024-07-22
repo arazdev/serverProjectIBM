@@ -14,7 +14,7 @@ app.use("/customer/auth/*", function auth(req, res, next) {
     const token = req.headers['authorization']
     if (!token) return res.status(403).send('Token is required')
 
-    jwt.verify(token, 'your_jwt_secret', (err, user) => {
+    jwt.verify(token, 'fingerprint_customer', (err, user) => {
         if (err) return res.status(403).send('Invalid Token');
         req.user = user
         next();
